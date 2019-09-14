@@ -1,0 +1,142 @@
+/* ==========================================================================
+   TYPOGRAPHY
+   ========================================================================== */
+
+.text {
+  /* Style
+       ========================================================================== */
+
+  &--serif {
+    font-family: $text-serif;
+  }
+
+  &--sans {
+    font-family: $text-sans;
+  }
+
+  &--mono {
+    font-family: $text-mono;
+  }
+
+  &--bold {
+    font-weight: 600;
+  }
+
+  &--italic {
+    font-style: italic;
+  }
+
+  &--uppercase {
+    @include text-uppercase();
+  }
+
+  &--strikethrough {
+    text-decoration: line-through;
+  }
+
+  &--left {
+    text-align: left;
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &--right {
+    text-align: right;
+  }
+
+  /* Size
+       ========================================================================== */
+  &--0 {
+    @include text-size(12px, 14px);
+    font-variation-settings: "wght" 450;
+    letter-spacing: 0.015em;
+    word-spacing: 0.001em;
+    line-height: 1.4;
+  }
+
+  &--1 {
+    @include text-size(14px, 16px);
+    font-variation-settings: "wght" 400;
+    letter-spacing: 0.005em;
+    word-spacing: 0.001em;
+    line-height: 1.4;
+  }
+
+  &--2 {
+    @include text-size(18px, 24px);
+    font-variation-settings: "wght" 500;
+    letter-spacing: -0.01em;
+    word-spacing: -0.01em;
+    line-height: 1.35;
+  }
+
+  &--3 {
+    @include text-size(32px, 48px);
+    font-variation-settings: "wght" 500;
+    letter-spacing: -0.015em;
+    word-spacing: -0.01em;
+    line-height: 1.4;
+  }
+
+  &--4 {
+    @include text-size(48px, 96px);
+    font-variation-settings: "wght" 450;
+    letter-spacing: -0.02em;
+    word-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  &--5 {
+    @include text-size(44px, 200px);
+    font-variation-settings: "wght" 500;
+    letter-spacing: -0.6vw;
+    line-height: 0.9;
+  }
+}
+
+.ul {
+  counter-reset: list;
+  padding-left: 32px;
+
+  &_li {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      left: -32px;
+      counter-increment: list;
+      font-feature-settings: "tnum";
+      content: counter(list, decimal-leading-zero);
+      color: rgba(226, 59, 17, 0.986);
+    }
+  }
+}
+
+.ol {
+  padding-left: 32px;
+
+  &_li {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      left: -24px;
+      font-feature-settings: "tnum";
+      content: "•";
+      color: rgba(226, 59, 17, 0.986);
+    }
+  }
+}
+
+/* Font Imports
+       ========================================================================== */
+
+@font-face {
+  src: url("~static/fonts/egmetaphor.ttf");
+  font-family: "egstad-sans";
+  font-display: swap;
+  font-weight: normal;
+  font-style: normal;
+}

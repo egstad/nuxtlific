@@ -48,27 +48,27 @@ export default (type, element, content, children) => {
    * Text Elements
    */
   if (type === Elements.heading1) {
-    return `<h1 class="h1">${children.join('')}</h1>`
+    return `<h1 class="h1 text--5">${children.join('')}</h1>`
   } else if (type === Elements.heading2) {
-    return `<h2 class="h2">${children.join('')}</h2>`
+    return `<h2 class="h2 text--4">${children.join('')}</h2>`
   } else if (type === Elements.heading3) {
-    return `<h3 class="h3">${children.join('')}</h3>`
+    return `<h3 class="h3 text--3">${children.join('')}</h3>`
   } else if (type === Elements.heading4) {
-    return `<h4 class="h4">${children.join('')}</h4>`
+    return `<h4 class="h4 text--2">${children.join('')}</h4>`
   } else if (type === Elements.heading5) {
-    return `<h5 class="h5">${children.join('')}</h5>`
+    return `<h5 class="h5 text--1">${children.join('')}</h5>`
   } else if (type === Elements.heading6) {
-    return `<h6 class="h6">${children.join('')}</h6>`
+    return `<h6 class="h6 text--0">${children.join('')}</h6>`
   } else if (type === Elements.paragraph) {
-    return `<p class="p">${children.join('')}</p>`
+    return `<p class="p text--1">${children.join('')}</p>`
   } else if (type === Elements.list) {
     return `<ul class="ul">${children.join('')}</ul>`
   } else if (type === Elements.listItem) {
-    return `<li class="ul_li">${children.join('')}</li>`
+    return `<li class="ul_li text--1">${children.join('')}</li>`
   } else if (type === Elements.oList) {
     return `<ol class="ol">${children.join('')}</ol>`
   } else if (type === Elements.oListItem) {
-    return `<li class="ol_li">${children.join('')}</li>`
+    return `<li class="ol_li text--1">${children.join('')}</li>`
   }
 
   // Return null to stick with the default behavior for everything else

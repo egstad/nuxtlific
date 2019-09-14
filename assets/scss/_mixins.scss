@@ -1,0 +1,79 @@
+/* ==========================================================================
+   MIXINS
+   Library of extendable code snippets
+   ========================================================================== */
+
+/* Typography
+     ========================================================================== */
+
+// All caps
+@mixin text-uppercase($letter-spacing: inherit) {
+  text-transform: uppercase;
+
+  @if ($letter-spacing) {
+    letter-spacing: $letter-spacing;
+  }
+}
+
+// Hyphenate text
+@mixin text-hyphenate() {
+  word-break: break-word;
+  hyphens: auto;
+}
+
+// Truncate text
+@mixin text-truncate($width: 100%) {
+  width: $width;
+  max-width: 100%;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// fluid type with min / max
+@mixin text-size($min-font-size, $max-font-size) {
+  font-size: $min-font-size;
+
+  @media screen and (min-width: $text-fluidity-start) {
+    font-size: calc(
+      #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+        ((100vw - #{$text-fluidity-start}) / #{strip-unit($text-fluidity-end - $text-fluidity-start)})
+    );
+  }
+
+  @media screen and (min-width: $text-fluidity-end) {
+    font-size: $max-font-size;
+  }
+}
+
+/* Box Model
+     ========================================================================== */
+
+@mixin reset-appearance {
+  -webkit-appearance: none;
+  line-height: inherit;
+  background: 0;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  width: auto;
+  overflow: visible;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+}
+
+/* Helpers
+     ========================================================================== */
+
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}

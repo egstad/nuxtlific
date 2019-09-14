@@ -2,13 +2,21 @@
 
 <template>
   <section class="container">
-    <h1>{{ title }}</h1>
-    <!-- <div>{{ content }}</div> -->
+    <header>
+      <prismic-rich-text :field="title" />
+    </header>
+
+    <template v-for="(slice, index) in slices">
+      <div :key="`${slice}-${index}`" :class="slice.slice_type">
+        <prismic-rich-text :field="slice.items[0].content" />
+      </div>
+    </template>
   </section>
 </template>
 
 <script>
 import Prismic from 'prismic-javascript'
+// import PrismicDOM from 'prismic-dom'
 import { initApi, generatePageData } from '@/prismic-config'
 
 export default {

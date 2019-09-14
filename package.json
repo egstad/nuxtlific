@@ -17,6 +17,7 @@
     "nuxt": "^2.0.0",
     "prismic-dom": "^2.1.0",
     "prismic-javascript": "^2.1.1",
+    "prismic-vue": "git+https://github.com/prismicio/prismic-vue.git#nuxt",
     "webpack": "^4.39.3"
   },
   "devDependencies": {

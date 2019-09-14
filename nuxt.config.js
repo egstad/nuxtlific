@@ -1,5 +1,6 @@
+import Prismic from 'prismic-javascript'
 import { prismicConfig, initApi } from './prismic-config'
-const Prismic = require('prismic-javascript')
+// const Prismic = require('prismic-javascript')
 
 export default {
   mode: 'universal',
@@ -31,7 +32,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['~/plugins/prismic/prismic-vue.js'],
   /*
    ** JS dude!
    */
@@ -58,6 +59,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/style-resources',
+    '~modules/custom-generate.js',
   ],
 
   styleResources: {

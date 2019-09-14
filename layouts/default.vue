@@ -1,7 +1,7 @@
 <template>
   <div>
     <SiteMenu />
-    <main class="site">
+    <main>
       <nuxt />
     </main>
   </div>
@@ -16,3 +16,9 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+main {
+  padding: 0 $space-1;
+}
+</style>

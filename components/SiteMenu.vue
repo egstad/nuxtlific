@@ -13,19 +13,20 @@
 
 <style lang="scss" scoped>
 .site-menu {
-  background: $color-fg;
+  padding: $space-1;
 
   ul {
+    width: 100%;
     display: inline-flex;
+    border-bottom: 1px solid $color-fg;
   }
 
   a {
     display: block;
     padding: $space-1;
-    color: $color-bg;
 
     &.nuxt-link-exact-active {
-      background: $color-interactive;
+      color: $color-interactive;
     }
   }
 }

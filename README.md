@@ -1,6 +1,7 @@
 # nuxtlific
 
 > Prismic + Netlify + Nuxt.js
+[![Netlify Status](https://api.netlify.com/api/v1/badges/00905143-4df8-4d02-b65b-0a6f97ba4e85/deploy-status)](https://app.netlify.com/sites/nuxtlific/deploys)
 
 ## Build Setup
 
@@ -35,6 +36,10 @@ Want to use other Custom Types? That's fine, but I recommend starting off with t
 2. Create a template(s) for your new Content Type `pages/pageName.vue`. For the single, non-repeatable types, I recommend using the Home template `./pages/index.vue` as your starter. For repeatable tyeps, I recommend using the Pieces templates as a starter — `./pages/pieces/index.vue` `./pages/pieces/_slug.vue`.
 3. Add/Edit `generatePageData()` found in `prismic-config.js`
 4. Test it out by running 'npm run generate'. Something shit the bed? Hope not!
+
+## Netlify
+Out of the box, Netlify has nothing to do with this repo. I know, it's a little misleading. That said, if you intend to continuously deploy your project, Netlify is the easiest tool I've found. To link Prismic to Netlify, simply setup a Build Hook, copy and paste that URL into Prismic's webhooks found under settings.
+
 
 
 ### Nuxt Config

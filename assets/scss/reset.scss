@@ -157,8 +157,8 @@ table {
 
 // highlighted text
 ::selection {
-  background: $color-bg;
-  color: $color-fg;
+  background: $color-fg;
+  color: $color-bg;
 }
 
 // document styles

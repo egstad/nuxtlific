@@ -28,7 +28,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['@/assets/scss/reset.scss'],
+  css: ['@/assets/scss/reset.scss', '@/assets/scss/typography.scss'],
   /*
    ** Plugins to load before mounting the App
    */
@@ -64,7 +64,7 @@ export default {
 
   styleResources: {
     // your settings here
-    scss: ['@/assets/scss/_vars.scss'],
+    scss: ['@/assets/scss/_vars.scss', '@/assets/scss/_mixins.scss'],
   },
   /*
    ** Axios module configuration

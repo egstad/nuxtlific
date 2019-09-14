@@ -14,6 +14,7 @@
 <style lang="scss" scoped>
 .site-menu {
   padding: $space-1;
+  position: relative;
 
   ul {
     width: 100%;

@@ -1,0 +1,223 @@
+@import "_vars.scss";
+
+/* ==========================================================================
+   Eric Meyer's version
+   ========================================================================== */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* ==========================================================================
+      My stuff
+      ========================================================================== */
+
+// base styles for erry damn thang
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "kern" 1, "pnum" 1;
+  font-kerning: normal;
+  font-synthesis: none;
+  box-sizing: border-box;
+
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
+}
+
+// highlighted text
+::selection {
+  background: $color-bg;
+  color: $color-fg;
+}
+
+// document styles
+html {
+  -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: relative;
+
+  font-family: $text-sans;
+  color: $color-fg;
+  background: $color-bg;
+}
+
+// set focus color on interactive elements
+a[href],
+area[href],
+input:not([disabled]),
+select:not([disabled]),
+textarea:not([disabled]),
+button:not([disabled]),
+iframe,
+[tabindex],
+[contentEditable="true"] {
+  &:not([tabindex="-1"]) {
+    outline-color: $color-interactive;
+  }
+}
+
+a {
+  // transition: color $trans-duration/4 $trans-ease, border-color $trans-duration/2 $trans-ease;
+  color: $color-fg;
+  text-decoration: none;
+
+  &:hover {
+    border-color: $color-interactive;
+  }
+
+  // &:active {}
+
+  // &:visited {}
+}
+
+hr {
+  border-color: $color-fg;
+}
+
+// image styles
+video,
+img {
+  max-width: 100%;
+  display: block;
+  min-height: 1px;
+
+  &:not([src]) {
+    visibility: hidden;
+  }
+}
+
+iframe {
+  width: 100%;
+}

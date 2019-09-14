@@ -1,0 +1,26 @@
+$color-bg: black;
+$color-fg: #6d6d6d;
+$color-interactive: #46aefd;
+
+// Breakpoints
+$vp0: 320px;
+$vp1: 420px;
+$vp2: 780px;
+$vp3: 1250px;
+$vp4: 1600px;
+$vp5: 2200px;
+
+// Space
+$space-1: 12px;
+
+// Typography
+$text-sans: Arial, sans-serif;
+$text-serif: Times, serif;
+$text-mono: Courier, monospace;
+$text-fluidity-start: $vp0;
+$text-fluidity-end: $vp4;
+
+// Transitions
+$trans-ease: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+$trans-duration: 400ms;
+$trans-delay-intro: 750ms;

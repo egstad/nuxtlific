@@ -1,10 +1,8 @@
-<!-- pages/index.vue -->
-
 <template>
-  <section class="container">
-    <h1>{{ title }}</h1>
-    <!-- <div>{{ content }}</div> -->
-  </section>
+  <div class="container">
+    <h1 v-if="title">{{ title }}</h1>
+    <h2 v-else>nots workin</h2>
+  </div>
 </template>
 
 <script>
@@ -14,13 +12,13 @@ import { initApi, generatePageData } from '@/prismic-config'
 export default {
   asyncData(context) {
     if (context.payload) {
-      return generatePageData('home', context.payload.data)
+      return generatePageData('piece', context.payload.data)
     } else {
       return initApi().then(api => {
         return api
-          .query(Prismic.Predicates.at('document.type', 'home'))
+          .query(Prismic.Predicates.at('my.pieces.uid', context.params.slug))
           .then(response => {
-            return generatePageData('home', response.results[0].data)
+            return generatePageData('piece', response.results[0].data)
           })
       })
     }

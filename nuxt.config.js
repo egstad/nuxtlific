@@ -99,7 +99,13 @@ export default {
   },
   generate: {
     routes() {
-      // Fetch content for the homepage and generate it
+      /**
+       * Fetch content for 'home'
+       *
+       * Want to query a different repeatable Custom Type other than home?
+       * Create the CT in Prismic, populate it with content
+       * and then change 'home' to 'whatever'
+       */
       const homepage = initApi().then(api => {
         return api
           .query(Prismic.Predicates.at('document.type', 'home'))
@@ -113,7 +119,13 @@ export default {
           })
       })
 
-      // Fetch content for the homepage and generate it
+      /**
+       * Fetch content for 'pieces'
+       *
+       * Want to query a different repeatable Custom Type other than pieces?
+       * Create the CT in Prismic, populate it with content
+       * and then change 'pieces' to 'whatever'
+       */
       const pieces = initApi().then(api => {
         return api
           .query(Prismic.Predicates.at('document.type', 'pieces'))
@@ -127,7 +139,7 @@ export default {
           })
       })
 
-      // Here I return an array of the results of each promise using the spread operator.
+      // We return an array of the results of each promise using the spread operator.
       // It will be passed to each page as the `payload` property of the `context` object,
       // which is used to generate the markup of the page.
       return Promise.all([homepage, pieces]).then(values => {

@@ -11,12 +11,14 @@
 <script>
 import Prismic from 'prismic-javascript'
 import Pic from '@/components/Pic'
+import { routeTransitionFade } from '@/mixins/route-transitions'
 import { initApi, generatePageData } from '@/prismic-config'
 
 export default {
   components: {
     Pic,
   },
+  mixins: [routeTransitionFade],
   asyncData(context) {
     if (context.payload) {
       return generatePageData('piece', context.payload.data)

@@ -122,6 +122,8 @@ export default {
 
       config.node = { fs: 'empty' }
     },
+
+    transpile: ['TweenMax', 'SplitText'],
   },
   generate: {
     routes() {

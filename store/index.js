@@ -2,6 +2,13 @@
 // import TweenMax from 'gsap/TweenMax'
 
 export const state = () => ({
+  // does user have prefers reduced motion enabled?
+  prefersReducedMotion: false,
+  // check to see if page is transitioning, defaulted to false
+  isTransitioning: false,
+  // what page are we on?
+  activePage: null,
+
   /**
    * BROWSER MEASUREMENTS
    */
@@ -19,6 +26,24 @@ export const state = () => ({
 })
 
 export const mutations = {
+  /**
+   * Set prefers reduced motion state
+   */
+  prefersReducedMotion(state, boolean) {
+    state.prefersReducedMotion = boolean
+  },
+  /**
+   * Set page transitioning state
+   */
+  isTransitioning(state, val) {
+    state.isTransitioning = val
+  },
+  /**
+   * Set active page
+   */
+  updateActivePage(state, val) {
+    state.activePage = val
+  },
   /**
    * Dimensions
    */

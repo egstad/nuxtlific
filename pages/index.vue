@@ -20,10 +20,11 @@
 
 <script>
 import Prismic from 'prismic-javascript'
-// import PrismicDOM from 'prismic-dom'
+import { routeTransitionFade } from '@/mixins/route-transitions'
 import { initApi, generatePageData } from '@/prismic-config'
 
 export default {
+  mixins: [routeTransitionFade],
   asyncData(context) {
     if (context.payload) {
       return generatePageData('home', context.payload.data)

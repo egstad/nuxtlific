@@ -1,9 +1,9 @@
 <template>
   <img
+    v-lazy
     class="image"
     :srcset="[size.sm, size.md, size.lg, size.xl]"
     :alt="alt"
-    v-lazy
   />
 </template>
 

@@ -13,9 +13,11 @@
 
 <script>
 import Prismic from 'prismic-javascript'
+import { routeTransitionFade } from '@/mixins/route-transitions'
 import { initApi, generatePageData } from '@/prismic-config'
 
 export default {
+  mixins: [routeTransitionFade],
   data() {
     return {
       pieces: [],
@@ -42,7 +44,8 @@ export default {
 
 <style lang="scss">
 a {
-  display: inline-flex;
+  display: inline-block;
+  overflow-wrap: normal;
   &:hover {
     text-decoration: none;
     color: $color-interactive;
@@ -50,5 +53,6 @@ a {
 }
 h2 {
   display: inline-block;
+  overflow-wrap: normal;
 }
 </style>

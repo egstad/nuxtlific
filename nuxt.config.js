@@ -62,7 +62,12 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/prismic/prismic-vue.js', '~/plugins/animate.js'],
+  plugins: [
+    '~/plugins/prismic/prismic-vue.js',
+    '~/plugins/utils.js',
+    '~/plugins/scrolls.js',
+    '~/plugins/animate.js',
+  ],
 
   /*
    ** Nuxt.js dev-modules

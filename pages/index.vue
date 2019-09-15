@@ -7,7 +7,11 @@
     </header>
 
     <template v-for="(slice, index) in slices">
-      <div :key="`${slice}-${index}`" :class="slice.slice_type">
+      <div
+        :key="`${slice}-${index}`"
+        :class="slice.slice_type"
+        class="animate js-animate"
+      >
         <prismic-rich-text :field="slice.items[0].content" />
       </div>
     </template>
@@ -32,6 +36,9 @@ export default {
           })
       })
     }
+  },
+  mounted() {
+    this.$app.$emit('page::mounted')
   },
 }
 </script>

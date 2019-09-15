@@ -1,7 +1,10 @@
 <template>
   <div class="container">
-    <h1 v-if="title">{{ title }}</h1>
-    <pic :image="image" />
+    <h1 class="text--5">{{ title }}</h1>
+
+    <figure v-if="image.url">
+      <pic :image="image" />
+    </figure>
   </div>
 </template>
 
@@ -26,6 +29,9 @@ export default {
           })
       })
     }
+  },
+  mounted() {
+    this.$app.$emit('page::mounted')
   },
 }
 </script>

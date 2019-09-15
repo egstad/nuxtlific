@@ -57,11 +57,12 @@ export default {
     '@/assets/scss/reset.scss',
     '@/assets/scss/typography.scss',
     '@/assets/scss/spacing.scss',
+    '@/assets/scss/animate.scss',
   ],
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/prismic/prismic-vue.js'],
+  plugins: ['~/plugins/prismic/prismic-vue.js', '~/plugins/animate.js'],
 
   /*
    ** Nuxt.js dev-modules

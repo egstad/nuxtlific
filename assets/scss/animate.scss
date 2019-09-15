@@ -1,0 +1,12 @@
+.animate {
+  transition: opacity 600ms ease-out, transform 400ms ease-in-out;
+  opacity: 0;
+
+  &.is-visible {
+    opacity: 1;
+  }
+
+  &--delayed {
+    transition-delay: 300ms;
+  }
+}

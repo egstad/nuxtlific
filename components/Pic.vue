@@ -36,8 +36,6 @@ export default {
       xl: `${this.image.desktop.url} 2500w`,
       fl: `${this.image.url}`,
     }
-
-    console.log(this.sizes)
   },
 }
 </script>

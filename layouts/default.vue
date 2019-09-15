@@ -14,6 +14,11 @@ export default {
   components: {
     SiteMenu,
   },
+  watch: {
+    $route(to, from) {
+      this.$app.$emit('route::updated')
+    },
+  },
 }
 </script>
 

@@ -2,17 +2,31 @@
 
 <template>
   <section class="container">
-    <header class="spacing-bottom-4">
-      <prismic-rich-text :field="title" />
+    <header class="spacing-bottom-5">
+      <!-- <prismic-rich-text :field="title" /> -->
+      <Logo class="spacing-top-4" />
     </header>
 
     <template v-for="(slice, index) in slices">
       <div
         :key="`${slice}-${index}`"
-        :class="slice.slice_type"
-        class="animate js-animate"
+        :class="`slice-${slice.slice_type}`"
+        class="animate js-animate wrap"
       >
-        <prismic-rich-text :field="slice.items[0].content" />
+        <prismic-rich-text
+          v-if="slice.slice_type === 'rich_text'"
+          :field="slice.items[0].content"
+        />
+
+        <figure v-if="slice.slice_type === 'image'">
+          <Pic
+            v-if="slice.slice_type === 'image'"
+            :image="slice.primary.image"
+          />
+          <figcaption v-if="slice.primary.caption">
+            <prismic-rich-text :field="slice.primary.caption" />
+          </figcaption>
+        </figure>
       </div>
     </template>
   </section>
@@ -20,10 +34,16 @@
 
 <script>
 import Prismic from 'prismic-javascript'
+import Logo from '@/components/Logo'
+import Pic from '@/components/Pic'
 import { routeTransitionFade } from '@/mixins/route-transitions'
 import { initApi, generatePageData } from '@/prismic-config'
 
 export default {
+  components: {
+    Logo,
+    Pic,
+  },
   mixins: [routeTransitionFade],
   asyncData(context) {
     if (context.payload) {
@@ -43,3 +63,10 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.wrap {
+  padding: 0 32px;
+  max-width: 1600px;
+}
+</style>

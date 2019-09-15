@@ -1,18 +1,21 @@
 <template>
-  <div>
+  <div class="site">
     <SiteMenu />
-    <main class="site-main spacing-top-4">
+    <main class="site-content spacing-top-4">
       <nuxt />
     </main>
+    <SiteFooter />
   </div>
 </template>
 
 <script>
 import SiteMenu from '@/components/SiteMenu'
+import SiteFooter from '@/components/SiteFooter'
 
 export default {
   components: {
     SiteMenu,
+    SiteFooter,
   },
   watch: {
     $route(to, from) {
@@ -25,5 +28,16 @@ export default {
 <style lang="scss">
 main {
   padding: 0 $space-1;
+}
+
+.site {
+  display: flex;
+  min-height: 100vh;
+  width: 100vw;
+  flex-direction: column;
+}
+
+.site-content {
+  flex: 1;
 }
 </style>

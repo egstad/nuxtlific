@@ -1,12 +1,13 @@
 <template>
-  <section class="container text--4">
+  <section class="container">
     <h2
       v-for="(piece, index) in pieces"
       :key="`${piece.title}-${index}`"
-      class="animate js-animate"
+      class="animate js-animate text--center"
     >
-      <nuxt-link :to="piece.uid" append>{{ piece.data.title }}</nuxt-link>
-      <span v-if="index < pieces.length - 1">•&nbsp;</span>
+      <nuxt-link :to="piece.uid" class="text--5" append>{{
+        piece.data.title
+      }}</nuxt-link>
     </h2>
   </section>
 </template>
@@ -42,17 +43,13 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 a {
-  display: inline-block;
-  overflow-wrap: normal;
+  display: block;
+
   &:hover {
     text-decoration: none;
     color: $color-interactive;
   }
-}
-h2 {
-  display: inline-block;
-  overflow-wrap: normal;
 }
 </style>

@@ -74,11 +74,10 @@
   }
 
   &--3 {
-    @include text-size(32px, 48px);
+    @include text-size(24px, 48px);
     font-variation-settings: "wght" 500;
-    letter-spacing: -0.015em;
-    word-spacing: -0.01em;
-    line-height: 1.4;
+    letter-spacing: -0.03em;
+    line-height: 1.25;
   }
 
   &--4 {
@@ -92,7 +91,7 @@
   &--5 {
     @include text-size(44px, 200px);
     font-variation-settings: "wght" 800;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.06em;
     line-height: 1;
   }
 }

@@ -60,15 +60,15 @@ export default (type, element, content, children) => {
   } else if (type === Elements.heading6) {
     return `<h6 class="h6 text--0">${children.join('')}</h6>`
   } else if (type === Elements.paragraph) {
-    return `<p class="p text--1 spacing-bottom-2">${children.join('')}</p>`
+    return `<p class="p text--3 spacing-bottom-2">${children.join('')}</p>`
   } else if (type === Elements.list) {
     return `<ul class="ul spacing-bottom-2">${children.join('')}</ul>`
   } else if (type === Elements.listItem) {
-    return `<li class="ul_li text--1">${children.join('')}</li>`
+    return `<li class="ul_li text--3">${children.join('')}</li>`
   } else if (type === Elements.oList) {
     return `<ol class="ol spacing-bottom-2">${children.join('')}</ol>`
   } else if (type === Elements.oListItem) {
-    return `<li class="ol_li text--1">${children.join('')}</li>`
+    return `<li class="ol_li text--3">${children.join('')}</li>`
   }
 
   // Return null to stick with the default behavior for everything else

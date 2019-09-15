@@ -74,21 +74,21 @@ $space: (
   &-bottom {
     @for $i from 1 through 8 {
       &-#{$i} {
-        @include space(padding, bottom, $i);
+        @include space(margin, bottom, $i);
       }
     }
   }
   &-top {
     @for $i from 1 through 8 {
       &-#{$i} {
-        @include space(padding, top, $i);
+        @include space(margin, top, $i);
       }
     }
   }
   &-both {
     @for $i from 1 through 8 {
       &-#{$i} {
-        @include space(padding, bottom top, $i);
+        @include space(margin, bottom top, $i);
       }
     }
   }

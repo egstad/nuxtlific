@@ -63,10 +63,11 @@ export default {
    ** Plugins to load before mounting the App
    */
   plugins: [
-    '~/plugins/prismic/prismic-vue.js',
-    '~/plugins/utils.js',
-    '~/plugins/scrolls.js',
-    '~/plugins/animate.js',
+    '@/plugins/prismic/prismic-vue.js',
+    '@/plugins/utils.js',
+    '@/plugins/scrolls.js',
+    '@/plugins/lazyloader.js',
+    '@/plugins/animate.js',
   ],
 
   /*

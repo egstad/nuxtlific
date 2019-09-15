@@ -2,7 +2,7 @@
 
 <template>
   <section class="container">
-    <header>
+    <header class="spacing-bottom-4">
       <prismic-rich-text :field="title" />
     </header>
 

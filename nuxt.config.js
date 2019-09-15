@@ -28,7 +28,11 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['@/assets/scss/reset.scss', '@/assets/scss/typography.scss'],
+  css: [
+    '@/assets/scss/reset.scss',
+    '@/assets/scss/typography.scss',
+    '@/assets/scss/spacing.scss',
+  ],
   /*
    ** Plugins to load before mounting the App
    */

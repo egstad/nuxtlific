@@ -30,7 +30,9 @@ export default {
     } else {
       return initApi().then(api => {
         return api
-          .query(Prismic.Predicates.at('document.type', 'pieces'))
+          .query(Prismic.Predicates.at('document.type', 'pieces'), {
+            orderings: '[document.first_publication_date]',
+          })
           .then(response => {
             return generatePageData('pieces', response.results)
           })

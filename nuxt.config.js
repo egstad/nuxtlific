@@ -19,7 +19,32 @@ export default {
         content: process.env.npm_package_description || '',
       },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: '/favicon.ico',
+      },
+      {
+        rel: 'preconnect',
+        href: 'https://code.jquery.com',
+      },
+      {
+        rel: 'preconnect',
+        href: 'https://egstad.prismic.io/',
+      },
+    ],
+    /*
+     ** JS dude!
+     */
+    script: [
+      {
+        innerHTML:
+          '{ window.prismic = { endpoint: "' + prismicConfig.baseUrl + '"} }',
+      },
+      { src: '//static.cdn.prismic.io/prismic.min.js', async: true },
+    ],
+    __dangerouslyDisableSanitizers: ['script'],
   },
   /*
    ** Customize the progress-bar color
@@ -37,16 +62,6 @@ export default {
    ** Plugins to load before mounting the App
    */
   plugins: ['~/plugins/prismic/prismic-vue.js'],
-  /*
-   ** JS dude!
-   */
-  script: [
-    {
-      innerHTML:
-        '{ window.prismic = { endpoint: "' + prismicConfig.baseUrl + '"} }',
-    },
-    { src: '//static.cdn.prismic.io/prismic.min.js', async: true },
-  ],
 
   /*
    ** Nuxt.js dev-modules

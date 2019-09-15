@@ -208,16 +208,16 @@ hr {
 }
 
 // image styles
-video,
-img {
-  max-width: 100%;
-  display: block;
-  min-height: 1px;
+// video,
+// img {
+//   max-width: 100%;
+//   display: block;
+//   min-height: 1px;
 
-  &:not([src]) {
-    visibility: hidden;
-  }
-}
+//   &:not([src]) {
+//     visibility: hidden;
+//   }
+// }
 
 iframe {
   width: 100%;

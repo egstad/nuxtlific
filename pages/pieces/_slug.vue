@@ -1,15 +1,19 @@
 <template>
   <div class="container">
     <h1 v-if="title">{{ title }}</h1>
-    <h2 v-else>nots workin</h2>
+    <pic :image="image" />
   </div>
 </template>
 
 <script>
 import Prismic from 'prismic-javascript'
+import Pic from '@/components/Pic'
 import { initApi, generatePageData } from '@/prismic-config'
 
 export default {
+  components: {
+    Pic,
+  },
   asyncData(context) {
     if (context.payload) {
       return generatePageData('piece', context.payload.data)

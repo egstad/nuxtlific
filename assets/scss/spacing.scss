@@ -1,0 +1,95 @@
+/* ==========================================================================
+ * Spacing Generator Mixin
+ * ==========================================================================
+ * Alongside both our grid and typographic systems, many of our spacing units
+ * also are fluid in nature. This fluidity ensures that there is a sense of
+ * consistent visual rhythm across pages. Some units are absolutely defined
+ * and never change - these more often than not are used for separating text
+ * blocks and buttons.
+ *
+ *
+ * Usage:
+ * @include space(margin, bottom top, 4);
+ *
+ * Param 1: defines property. Use margin or padding.
+ * Param 2: defines space location. Default is bottom. Could be 'top bottom'.
+ * Param 3: defines amount of space. 1 is the least, 8 is the most amount of space.
+ */
+
+// currently this is set to the start/end of the type system
+$text-fluidity-start: 320px;
+$text-fluidity-end: 2500px;
+
+// spacing profiles
+// param 1: name of size profile
+// param 2: min size
+// param 3: max size
+$space: (
+  (1, 10px, 10px),
+  (2, 20px, 20px),
+  (3, 40px, 40px),
+  (4, 40px, 80px),
+  (5, 55px, 120px),
+  (6, 80px, 200px),
+  (7, 160px, 280px),
+  (8, 200px, 360px)
+);
+
+// strip unit value (px, vh, %, etc.)
+// @function strip-unit($value) {
+//   @return $value / ($value * 0 + 1);
+// }
+
+// space mixin which takes type of spacing, location, and size
+@mixin space($type: padding, $location: bottom, $size: 4) {
+  // if space exists
+  @if $size in $space {
+    // set minimum
+    @each $loc in $location {
+      #{$type}-#{$loc}: nth(nth($space, $size), 2);
+    }
+    // skip this if min and max are the same
+    @if nth(nth($space, $size), 2) != nth(nth($space, $size), 3) {
+      @media screen and (min-width: $text-fluidity-start) {
+        @each $loc in $location {
+          #{$type}-#{$loc}: calc(
+            #{nth(nth($space, $size), 2)} +
+              #{strip-unit(nth(nth($space, $size), 3) - nth(nth($space, $size), 2))} *
+              ((100vw - #{$text-fluidity-start}) / #{strip-unit($text-fluidity-end - $text-fluidity-start)})
+          );
+        }
+      }
+      @media screen and (min-width: $text-fluidity-end) {
+        @each $loc in $location {
+          #{$type}-#{$loc}: nth(nth($space, $size), 3);
+        }
+      }
+    }
+  }
+}
+
+// set prefix name here, currently is "spacing".
+// one mixin for bottom padding only, one for top only, and one for both.
+.spacing {
+  &-bottom {
+    @for $i from 1 through 8 {
+      &-#{$i} {
+        @include space(padding, bottom, $i);
+      }
+    }
+  }
+  &-top {
+    @for $i from 1 through 8 {
+      &-#{$i} {
+        @include space(padding, top, $i);
+      }
+    }
+  }
+  &-both {
+    @for $i from 1 through 8 {
+      &-#{$i} {
+        @include space(padding, bottom top, $i);
+      }
+    }
+  }
+}

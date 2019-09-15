@@ -62,6 +62,7 @@
     letter-spacing: 0.005em;
     word-spacing: 0.001em;
     line-height: 1.4;
+    font-variant-ligatures: contextual !important;
   }
 
   &--2 {
@@ -90,8 +91,8 @@
 
   &--5 {
     @include text-size(44px, 200px);
-    font-variation-settings: "wght" 500;
-    letter-spacing: -0.6vw;
+    font-variation-settings: "wght" 800;
+    letter-spacing: -0.07em;
     line-height: 0.9;
   }
 }

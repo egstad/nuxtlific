@@ -1,7 +1,7 @@
 <template>
   <div>
     <SiteMenu />
-    <main>
+    <main class="site-main spacing-top-4">
       <nuxt />
     </main>
   </div>

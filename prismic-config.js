@@ -14,15 +14,18 @@ export const generatePageData = (documentType, data) => {
   switch (documentType) {
     case 'home':
       return {
+        pageContent: data,
         title: data.title,
         slices: data.body,
       }
     case 'pieces':
       return {
+        pageContent: data,
         pieces: data,
       }
     case 'piece':
       return {
+        pageContent: data,
         title: data.title,
         image: data.image,
       }

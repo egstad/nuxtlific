@@ -12,12 +12,65 @@ export default {
     title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1, maximum-scale=2',
+      },
       {
         hid: 'description',
         name: 'description',
         content: process.env.npm_package_description || '',
       },
+      {
+        property: 'og:title',
+        content: process.env.npm_package_name || '',
+        vmid: 'og:title',
+      },
+      {
+        property: 'og:url',
+        content: 'https://egstad.com',
+        vmid: 'og:url',
+      },
+      {
+        property: 'og:type',
+        content: 'website',
+        vmid: 'og:type',
+      },
+      {
+        property: 'og:site_name',
+        content: process.env.npm_package_name || '',
+        vmid: 'og:site_name',
+      },
+      {
+        property: 'og:description',
+        content: process.env.npm_package_description || '',
+        vmid: 'og:description',
+      },
+      // {
+      //   property: 'og:image:width',
+      //   content: '1200',
+      //   vmid: 'og:image:width',
+      // },
+      // {
+      //   property: 'og:image:height',
+      //   content: '630',
+      //   vmid: 'og:image:height',
+      // },
+      // {
+      //   property: 'og:image',
+      //   content: ``,
+      //   vmid: 'og:image',
+      // },
+      // {
+      //   property: 'twitter:site',
+      //   content: '',
+      //   vmid: 'twitter:site',
+      // },
+      // {
+      //   property: 'twitter:creator',
+      //   content: '',
+      //   vmid: 'twitter:creator',
+      // },
     ],
     link: [
       {
@@ -64,10 +117,20 @@ export default {
    */
   plugins: [
     '@/plugins/prismic/prismic-vue.js',
+    '@/plugins/page-metadata.js',
     '@/plugins/utils.js',
-    '@/plugins/scrolls.js',
-    '@/plugins/lazyloader.js',
-    '@/plugins/animate.js',
+    {
+      src: '@/plugins/scrolls.js',
+      ssr: false,
+    },
+    {
+      src: '@/plugins/lazyloader.js',
+      ssr: false,
+    },
+    {
+      src: '@/plugins/animate.js',
+      ssr: false,
+    },
   ],
 
   /*

@@ -5,9 +5,9 @@
       :key="`${piece.title}-${index}`"
       class="animate js-animate text--center"
     >
-      <nuxt-link :to="piece.uid" class="text--5" append>
-        {{ piece.data.title }}
-      </nuxt-link>
+      <nuxt-link :to="piece.uid" class="text--5" append>{{
+        piece.data.title
+      }}</nuxt-link>
     </h2>
   </section>
 </template>
@@ -19,11 +19,13 @@ import { initApi, generatePageData } from '@/prismic-config'
 
 export default {
   mixins: [routeTransitionFade],
-  data() {
-    return {
-      pieces: [],
-    }
-  },
+  // data() {
+  //   return {
+  //     pageContent: {
+  //       title: [{ text: 'Pieces' }],
+  //     },
+  //   }
+  // },
   asyncData(context) {
     if (context.payload) {
       return generatePageData('pieces', context.payload.data)

@@ -2,7 +2,6 @@ export default function(doc) {
   // catch for full router data
   if (typeof doc.route !== 'undefined') {
     if (typeof doc.route.path !== 'undefined') {
-      // console.log('Full route:', doc.route.path)
       return
     }
   }

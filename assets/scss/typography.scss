@@ -89,7 +89,7 @@
   }
 
   &--5 {
-    @include text-size(44px, 200px);
+    @include text-size(44px, 250px);
     font-variation-settings: "wght" 800;
     letter-spacing: -0.06em;
     line-height: 1;
@@ -98,14 +98,12 @@
 
 .ul {
   counter-reset: list;
-  padding-left: 32px;
-
   &_li {
     position: relative;
 
     &::before {
-      position: absolute;
-      left: -32px;
+      width: 1.8em;
+      display: inline-block;
       counter-increment: list;
       font-feature-settings: "tnum";
       content: counter(list, decimal-leading-zero);
@@ -115,14 +113,13 @@
 }
 
 .ol {
-  padding-left: 32px;
-
   &_li {
     position: relative;
 
     &::before {
-      position: absolute;
-      left: -24px;
+      width: 1.8em;
+      padding-left: 0.5em;
+      display: inline-block;
       font-feature-settings: "tnum";
       content: "•";
       color: rgba(226, 59, 17, 0.986);
@@ -134,7 +131,7 @@
        ========================================================================== */
 
 @font-face {
-  src: url("~static/fonts/egmetaphor.ttf");
+  src: url("~static/fonts/egmetaphor.woff2");
   font-family: "egstad-sans";
   font-display: swap;
   font-weight: normal;

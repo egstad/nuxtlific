@@ -2,9 +2,8 @@
 
 <template>
   <section class="container">
-    <header class="spacing-bottom-5">
-      <!-- <prismic-rich-text :field="title" /> -->
-      <Logo class="spacing-top-4" />
+    <header class="spacing-bottom-4">
+      <Logo />
     </header>
 
     <template v-for="(slice, index) in slices">
@@ -66,7 +65,6 @@ export default {
 
 <style lang="scss">
 .wrap {
-  padding: 0 32px;
-  max-width: 1600px;
+  max-width: 800px;
 }
 </style>

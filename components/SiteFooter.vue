@@ -17,7 +17,7 @@
 
 <style lang="scss" scoped>
 .site-footer {
-  padding: $space-1;
+  padding: 20px;
   border-top: 1px solid $color-fg;
   display: flex;
   justify-content: space-between;

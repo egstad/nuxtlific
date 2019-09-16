@@ -1,7 +1,7 @@
 <template>
   <div class="site">
     <SiteMenu />
-    <main class="site-content spacing-top-4">
+    <main class="site-content spacing-top-2">
       <nuxt />
     </main>
     <SiteFooter />
@@ -27,7 +27,7 @@ export default {
 
 <style lang="scss">
 main {
-  padding: 0 $space-1;
+  padding: 0 20px;
 }
 
 .site {

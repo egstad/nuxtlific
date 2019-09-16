@@ -5,9 +5,9 @@
       :key="`${piece.title}-${index}`"
       class="animate js-animate text--center"
     >
-      <nuxt-link :to="piece.uid" class="text--5" append>{{
-        piece.data.title
-      }}</nuxt-link>
+      <nuxt-link :to="piece.uid" class="text--5" append>
+        {{ piece.data.title }}
+      </nuxt-link>
     </h2>
   </section>
 </template>
@@ -46,6 +46,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+h2 {
+  overflow: hidden;
+}
 a {
   display: block;
 

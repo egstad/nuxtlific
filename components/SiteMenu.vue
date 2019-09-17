@@ -18,7 +18,8 @@
 .site-menu {
   position: relative;
   color: $color-bg;
-  // border-bottom: 1px solid $color-fg;
+  padding: 20px;
+  border-bottom: 1px solid $color-fg;
 
   ul {
     width: 100%;
@@ -26,13 +27,12 @@
     margin: 0 auto;
     justify-content: space-between;
     line-height: 1;
-    border-bottom: 1px solid $color-fg;
   }
 
   a {
     transition: color $trans-duration/2 $trans-ease;
     display: block;
-    padding: 0.5em 20px 0.6em;
+    // padding: 0.5em 20px 0.6em;
     margin: 0;
 
     &:hover {

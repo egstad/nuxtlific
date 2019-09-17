@@ -1,10 +1,9 @@
 <template>
   <section class="container">
-    <h1 class="text--5">{{ title }}</h1>
     <h2
       v-for="(piece, index) in pieces"
       :key="`${piece.data.title}-${index}`"
-      class="animate js-animate text--center"
+      class="animate js-animate"
     >
       <nuxt-link :to="piece.uid" class="text--5" append>
         {{ piece.data.title }}
@@ -22,15 +21,15 @@ export default {
   mixins: [routeTransitionFade],
   asyncData(context) {
     if (context.payload) {
-      return generatePageData('pieces', context.payload.data)
+      return generatePageData('pieces_single', context.payload.data)
     } else {
       return initApi().then(api => {
         return api
-          .query(Prismic.Predicates.at('document.type', 'pieces'), {
+          .query(Prismic.Predicates.at('document.type', 'pieces_single'), {
             orderings: '[document.first_publication_date]',
           })
           .then(response => {
-            return generatePageData('pieces', response.results[0].data)
+            return generatePageData('pieces_single', response.results)
           })
       })
     }
@@ -38,9 +37,9 @@ export default {
   mounted() {
     this.$app.$emit('page::mounted')
   },
-  head() {
-    return this.$setPageMetadata(this.pageContent)
-  },
+  // head() {
+  //   return this.$setPageMetadata(this.pageContent)
+  // },
 }
 </script>
 

@@ -211,33 +211,13 @@ export default {
       })
 
       /**
-       * Fetch content for 'home'
-       *
-       * Want to query a different repeatable Custom Type other than home?
-       * Create the CT in Prismic, populate it with content
-       * and then change 'home' to 'whatever'
-       */
-      const pieces = initApi().then(api => {
-        return api
-          .query(Prismic.Predicates.at('document.type', 'pieces'))
-          .then(response => {
-            return response.results.map(payload => {
-              return {
-                route: '/pieces',
-                payload,
-              }
-            })
-          })
-      })
-
-      /**
        * Fetch content for 'pieces'
        *
        * Want to query a different repeatable Custom Type other than pieces?
        * Create the CT in Prismic, populate it with content
-       * and then change 'pieces' to 'whatever'
+       * and then change 'pieces_single' to 'whatever'
        */
-      const piecesSingle = initApi().then(api => {
+      const pieces = initApi().then(api => {
         return api
           .query(Prismic.Predicates.at('document.type', 'pieces_single'), {
             orderings: '[document.first_publication_date]',
@@ -255,8 +235,8 @@ export default {
       // We return an array of the results of each promise using the spread operator.
       // It will be passed to each page as the `payload` property of the `context` object,
       // which is used to generate the markup of the page.
-      return Promise.all([homepage, pieces, piecesSingle]).then(values => {
-        return [...values[0], ...values[1], ...values[2]]
+      return Promise.all([homepage, pieces]).then(values => {
+        return [...values[0], ...values[1]]
       })
     },
   },

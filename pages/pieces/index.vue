@@ -1,13 +1,14 @@
 <template>
   <section class="container">
+    <h1 class="text--5">{{ title }}</h1>
     <h2
       v-for="(piece, index) in pieces"
-      :key="`${piece.title}-${index}`"
+      :key="`${piece.data.title}-${index}`"
       class="animate js-animate text--center"
     >
-      <nuxt-link :to="piece.uid" class="text--5" append>{{
-        piece.data.title
-      }}</nuxt-link>
+      <nuxt-link :to="piece.uid" class="text--5" append>
+        {{ piece.data.title }}
+      </nuxt-link>
     </h2>
   </section>
 </template>
@@ -19,13 +20,6 @@ import { initApi, generatePageData } from '@/prismic-config'
 
 export default {
   mixins: [routeTransitionFade],
-  // data() {
-  //   return {
-  //     pageContent: {
-  //       title: [{ text: 'Pieces' }],
-  //     },
-  //   }
-  // },
   asyncData(context) {
     if (context.payload) {
       return generatePageData('pieces', context.payload.data)
@@ -36,7 +30,8 @@ export default {
             orderings: '[document.first_publication_date]',
           })
           .then(response => {
-            return generatePageData('pieces', response.results)
+            // console.log(response.results[0].data.body[0].items)
+            return generatePageData('pieces', response.results[0].data)
           })
       })
     }

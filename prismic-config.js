@@ -1,7 +1,7 @@
 import Prismic from 'prismic-javascript'
 
 export const prismicConfig = {
-  baseUrl: 'https://egstad.cdn.prismic.io/api/v2',
+  baseUrl: 'https://nuxtlific.cdn.prismic.io/api/v2',
 }
 
 export const initApi = req => {
@@ -19,15 +19,34 @@ export const generatePageData = (documentType, data) => {
         slices: data.body,
       }
     case 'pieces':
-      return {
-        pageContent: data,
-        pieces: data,
-      }
-    case 'piece':
+      const pieces = []
+
+      // get post data for each piece
+      data.body[0].items.forEach(piece => {
+        initApi().then(api => {
+          return api
+            .query(
+              Prismic.Predicates.at('my.pieces_single.uid', piece.piece.uid)
+            )
+            .then(response => {
+              const items = {
+                uid: response.results[0].uid,
+                data: response.results[0].data,
+              }
+              pieces.push(items)
+            })
+        })
+      })
+
       return {
         pageContent: data,
         title: data.title,
-        image: data.image,
+        pieces,
+      }
+    case 'pieces_single':
+      return {
+        pageContent: data,
+        title: data.title,
       }
   }
 }

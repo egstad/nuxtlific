@@ -2,32 +2,35 @@
   <div class="container">
     <h1 class="text--5">{{ title }}</h1>
 
-    <figure v-if="image.url">
+    <!-- <figure v-if="image.url">
       <pic :image="image" />
-    </figure>
+    </figure>-->
   </div>
 </template>
 
 <script>
 import Prismic from 'prismic-javascript'
-import Pic from '@/components/Pic'
+// import Pic from '@/components/Pic'
 import { routeTransitionFade } from '@/mixins/route-transitions'
 import { initApi, generatePageData } from '@/prismic-config'
 
 export default {
-  components: {
-    Pic,
-  },
+  // components: {
+  //   Pic,
+  // },
   mixins: [routeTransitionFade],
   asyncData(context) {
     if (context.payload) {
-      return generatePageData('piece', context.payload.data)
+      return generatePageData('pieces_single', context.payload.data)
     } else {
       return initApi().then(api => {
         return api
-          .query(Prismic.Predicates.at('my.pieces.uid', context.params.slug))
+          .query(
+            Prismic.Predicates.at('my.pieces_single.uid', context.params.slug)
+          )
           .then(response => {
-            return generatePageData('piece', response.results[0].data)
+            console.log(response)
+            return generatePageData('pieces_single', response.results[0].data)
           })
       })
     }
@@ -35,8 +38,8 @@ export default {
   mounted() {
     this.$app.$emit('page::mounted')
   },
-  head() {
-    return this.$setPageMetadata(this.pageContent)
-  },
+  // head() {
+  //   return this.$setPageMetadata(this.pageContent)
+  // },
 }
 </script>

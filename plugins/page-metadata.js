@@ -7,15 +7,16 @@
 import Vue from 'vue'
 
 Vue.prototype.$setPageMetadata = pageData => {
-  // get meta values and add to an array. Only add items that have a value.
-  // Items with a null value will use the site defaults.
-  const pageMeta = []
-  // Title for search and browser tab
-  const pageTitle = pageData.title || process.env.npm_package_name
-
   if (pageData === undefined) {
     return
   }
+
+  // get meta values and add to an array. Only add items that have a value.
+  // Items with a null value will use the site defaults.
+  const pageMeta = []
+
+  // Title for search and browser tab
+  const pageTitle = pageData.title || process.env.npm_package_name
 
   // Image for social
   // if (pageData.social_image) {
@@ -36,13 +37,13 @@ Vue.prototype.$setPageMetadata = pageData => {
   // }
 
   // Title for social
-  if (pageData.title[0].text) {
-    pageMeta.push({
-      hid: `og:title`,
-      property: 'og:title',
-      content: pageTitle,
-    })
-  }
+  // if (pageData.title[0].text) {
+  //   pageMeta.push({
+  //     hid: `og:title`,
+  //     property: 'og:title',
+  //     content: pageTitle,
+  //   })
+  // }
 
   // Description for search
   // if (pageData.meta_description) {

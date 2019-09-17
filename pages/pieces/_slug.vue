@@ -29,7 +29,6 @@ export default {
             Prismic.Predicates.at('my.pieces_single.uid', context.params.slug)
           )
           .then(response => {
-            console.log(response)
             return generatePageData('pieces_single', response.results[0].data)
           })
       })
@@ -38,8 +37,8 @@ export default {
   mounted() {
     this.$app.$emit('page::mounted')
   },
-  // head() {
-  //   return this.$setPageMetadata(this.pageContent)
-  // },
+  head() {
+    return this.$setPageMetadata(this.pageContent)
+  },
 }
 </script>

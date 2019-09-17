@@ -30,7 +30,6 @@ export default {
             orderings: '[document.first_publication_date]',
           })
           .then(response => {
-            // console.log(response.results[0].data.body[0].items)
             return generatePageData('pieces', response.results[0].data)
           })
       })
@@ -38,6 +37,9 @@ export default {
   },
   mounted() {
     this.$app.$emit('page::mounted')
+  },
+  head() {
+    return this.$setPageMetadata(this.pageContent)
   },
 }
 </script>

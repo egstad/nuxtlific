@@ -1,3 +1,0 @@
-[submodule "wiki"]
-	path = wiki
-	url = git:https://github.com/egstad/nuxtlific.wiki.git

@@ -54,12 +54,6 @@ if (process.client) {
       // in with the new
       animate.init()
     })
-
-    window.$app.$on('animate::reset', () => {
-      // out with the old & in with the new
-      animate.destroy()
-      animate.init()
-    })
   })
 }
 

@@ -5,9 +5,9 @@
   "author": "Jordan Egstad",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "start": "nuxt",
     "build": "nuxt build",
-    "start": "nuxt start",
+    "serve": "nuxt start",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
   },

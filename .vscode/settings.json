@@ -1,2 +1,27 @@
 {
+  "vetur.validation.template": false,
+  "editor.formatOnSave": false,
+  "eslint.autoFixOnSave": true,
+  "prettier.eslintIntegration": true,
+  "eslint.validate": [
+    {
+      "language": "vue",
+      "autoFix": true
+    },
+    {
+      "language": "html",
+      "autoFix": true
+    },
+    {
+    "language": "javascript",
+    "autoFix": true
+    },
+    {
+      "language": "javascriptreact",
+      "autoFix": true
+      },
+  ],
+  "files.associations": {
+    "*.css": "vue-postcss"
+  }
 }

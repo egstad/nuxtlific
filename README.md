@@ -5,7 +5,7 @@
 > **A JAM-stack framework that's so easy to use, you'll want to slap your grandma _(fucking don't though)._**
 
 ## Overview
-At a high-level, Nuxtlific is a blend of [Nuxt.js](https://nuxtjs.org/), [Netlify](https://www.netlify.com/docs/), and [Prismic](https://prismic.io/docs/javascript/getting-started/integrating-with-an-existing-javascript-project). Nuxt consumes data from Prismic and handles the static-generation of the app. Once pushed to github, Netlify (or a similar service) will continuously deploy the site. It's easy to learn, safe to use, and in most cases it's free. Fucking free.
+At a high-level, Nuxtlific is a blend of [Nuxt.js](https://nuxtjs.org/), [Netlify](https://www.netlify.com/docs/), and [Prismic](https://prismic.io/docs/javascript/getting-started/integrating-with-an-existing-javascript-project). Nuxt consumes data from Prismic and handles the static-generation of the app. Once pushed to github, Netlify (or a similar service) will continuously deploy the site. It's easy to learn, safe to use, and in most cases it's free. Fucking free!
 
 ## Installation
 If you don't already have Prismic or Netlify accounts setup, start there. Both are free and won't take long. Once that is squared away, clone the repo and run the following scripts:

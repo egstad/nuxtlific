@@ -7,19 +7,27 @@
     {
       "language": "vue",
       "autoFix": true
-    },
-    {
-      "language": "html",
+  },
+  {
+      "language": "json",
       "autoFix": true
-    },
-    {
-    "language": "javascript",
-    "autoFix": true
-    },
-    {
+  },
+  {
+      "language": "javascript",
+      "autoFix": true
+  },
+  {
       "language": "javascriptreact",
       "autoFix": true
-      },
+  },
+  {
+      "language": "scss",
+      "autoFix": true
+  },
+  {
+      "language": "md",
+      "autoFix": true
+  },
   ],
   "files.associations": {
     "*.css": "vue-postcss"

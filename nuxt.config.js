@@ -152,6 +152,16 @@ export default {
   ],
 
   /*
+   ** Progressive web app information
+   */
+  pwa: {
+    manifest: {
+      name: process.env.npm_package_name,
+      lang: 'en',
+    },
+  },
+
+  /*
    ** Share variables, mixins, functions across all style files (no @import needed)
    */
   styleResources: {

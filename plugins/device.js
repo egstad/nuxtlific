@@ -1,12 +1,14 @@
-// import dom from "./dom"
-
 /* ==========================================================================
-   UTILS
+   DEVICE
    ==========================================================================
-   • Helpful global variables and functions
+   • Determines if device can be manipulated by touch and/or cursor
+   • Determines window dimentions
+   • Determines document dimentions
+   • Handles window resizes and stores dimensions in Vuex
+   • And more
    ========================================================================== */
 
-const utils = {
+const device = {
   init() {
     if (process.client) {
       // device detection
@@ -108,49 +110,17 @@ const utils = {
       }, this.delay)
     }
   },
-
-  // is element in view?
-  isElementVisible(el) {
-    let ret = false
-
-    if (el) {
-      const bounds = el.getBoundingClientRect()
-
-      ret = bounds.top < utils.winHeight && bounds.bottom > 0
-    }
-    return ret
-  },
-
-  /**
-   * @name splitValuesRGB
-   * @desc converts string of rgb into an object
-   * @args an rgb string (ie: '24, 34, 255')
-   */
-  splitValuesRGB(color) {
-    const array = color.replace(/\s+/g, '').split(',')
-    const rgb = {}
-
-    rgb.r = parseInt(array[0], 10)
-    rgb.g = parseInt(array[1].replace(/%+/g, ''), 10)
-    rgb.b = parseInt(array[2].replace(/%+/g, ''), 10)
-    return rgb
-  },
-
-  // get random array
-  random(array) {
-    return array[Math.floor(Math.random() * array.length)]
-  },
 }
 
 if (process.client) {
   window.onAppReady(app => {
-    utils.init()
+    device.init()
 
     // update on new page
     window.$app.$on('page::mounted', () => {
-      utils.measureWindow()
+      device.measureWindow()
     })
   })
 }
 
-export default utils
+export default device

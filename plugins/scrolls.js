@@ -1,5 +1,5 @@
 // import dom from "./dom"
-import utils from './utils'
+import device from './device'
 
 /* ==========================================================================
    SCROLL
@@ -52,18 +52,18 @@ const scroll = {
   },
 
   scrollDirector() {
-    utils.docX = document.body.getBoundingClientRect().left
-    utils.docY = document.body.getBoundingClientRect().top
-    utils.docHeight = document.body.scrollHeight
-    utils.docWidth = document.body.scrollWidth
+    device.docX = document.body.getBoundingClientRect().left
+    device.docY = document.body.getBoundingClientRect().top
+    device.docHeight = document.body.scrollHeight
+    device.docWidth = document.body.scrollWidth
 
-    if (utils.docY > this.scrollY) {
+    if (device.docY > this.scrollY) {
       this.scrollUp()
-    } else if (utils.docY < this.scrollY) {
+    } else if (device.docY < this.scrollY) {
       this.scrollDown()
-    } else if (utils.docX > this.scrollX) {
+    } else if (device.docX > this.scrollX) {
       this.scrollLeft()
-    } else if (utils.docX < this.scrollX) {
+    } else if (device.docX < this.scrollX) {
       this.scrollRight()
     }
 
@@ -71,9 +71,10 @@ const scroll = {
   },
 
   isTopOut() {
-    const isAtTop = (utils.docY === 0) === true
+    const isAtTop = (device.docY === 0) === true
     const isAtBottom =
-      utils.docHeight <= -(Math.ceil(utils.docY - 1) - utils.winHeight) === true
+      device.docHeight <= -(Math.ceil(device.docY - 1) - device.winHeight) ===
+      true
 
     // at top
     if (isAtTop) {
@@ -91,7 +92,7 @@ const scroll = {
       window.$app.$emit('scroll::end')
       // update window measurement
       // in case images/video/ets load and change body height
-      utils.measureWindow()
+      device.measureWindow()
     }, 250)
   },
 

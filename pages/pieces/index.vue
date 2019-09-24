@@ -19,6 +19,13 @@ import { initApi, generatePageData } from '@/prismic-config'
 
 export default {
   mixins: [routeTransitionFade],
+  data() {
+    return {
+      pageContent: {
+        title: 'Pieces',
+      },
+    }
+  },
   asyncData(context) {
     if (context.payload) {
       return generatePageData('pieces_single', context.payload.data)
@@ -37,9 +44,9 @@ export default {
   mounted() {
     this.$app.$emit('page::mounted')
   },
-  // head() {
-  //   return this.$setPageMetadata(this.pageContent)
-  // },
+  head() {
+    return this.$setPageMetadata(this.pageContent)
+  },
 }
 </script>
 

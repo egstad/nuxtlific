@@ -1,13 +1,9 @@
 import Prismic from 'prismic-javascript'
 import { prismicConfig, initApi } from './prismic-config'
-// const Prismic = require('prismic-javascript')
 
 export default {
   mode: 'universal',
   globalName: 'app',
-  /*
-   ** Headers of the page
-   */
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -99,10 +95,12 @@ export default {
     ],
     __dangerouslyDisableSanitizers: ['script'],
   },
+
   /*
    ** Customize the progress-bar color
    */
   loading: { color: 'rgb(243, 62, 17)' },
+
   /*
    ** Global CSS
    */
@@ -112,6 +110,7 @@ export default {
     '@/assets/scss/spacing.scss',
     '@/assets/scss/animate.scss',
   ],
+
   /*
    ** Plugins to load before mounting the App
    */
@@ -140,6 +139,7 @@ export default {
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
   ],
+
   /*
    ** Nuxt.js modules
    */
@@ -151,15 +151,20 @@ export default {
     '~modules/custom-generate.js',
   ],
 
+  /*
+   ** Share variables, mixins, functions across all style files (no @import needed)
+   */
   styleResources: {
     // your settings here
     scss: ['@/assets/scss/_vars.scss', '@/assets/scss/_mixins.scss'],
   },
+
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
   axios: {},
+
   /*
    ** Build configuration
    */

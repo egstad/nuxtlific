@@ -12,24 +12,3 @@ export const initApi = new ApolloClient({
   }),
   cache: new InMemoryCache(),
 })
-
-export const generatePageData = (documentType, data) => {
-  switch (documentType) {
-    case 'home':
-      return {
-        pageContent: data,
-        title: data.title,
-        slices: data.body,
-      }
-    case 'pieces':
-      return {
-        pageContent: data,
-        title: data.title,
-      }
-    case 'pieces_single':
-      return {
-        pageContent: data,
-        title: data.title,
-      }
-  }
-}

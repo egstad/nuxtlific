@@ -5,63 +5,62 @@
     <header class="spacing-bottom-4">
       <Logo />
     </header>
-
-    <template v-for="(slice, index) in slices">
-      <div
-        :key="`${slice}-${index}`"
-        :class="`slice-${slice.slice_type}`"
-        class="animate js-animate wrap"
-      >
-        <prismic-rich-text
-          v-if="slice.slice_type === 'rich_text'"
-          :field="slice.items[0].content"
-        />
-
-        <figure v-if="slice.slice_type === 'image'">
-          <Pic
-            v-if="slice.slice_type === 'image'"
-            :image="slice.primary.image"
-          />
-          <figcaption v-if="slice.primary.caption">
-            <prismic-rich-text :field="slice.primary.caption" />
-          </figcaption>
-        </figure>
-      </div>
-    </template>
   </section>
 </template>
 
 <script>
-import Prismic from 'prismic-javascript'
+import gql from 'graphql-tag'
 import Logo from '@/components/Logo'
-import Pic from '@/components/Pic'
 import { routeTransitionFade } from '@/mixins/route-transitions'
-import { initApi, generatePageData } from '@/prismic-config'
+import { initGql } from '@/prismic-config'
 
 export default {
   components: {
     Logo,
-    Pic,
   },
   mixins: [routeTransitionFade],
-  asyncData(context) {
-    if (context.payload) {
-      return generatePageData('home', context.payload.data)
-    } else {
-      return initApi().then(api => {
-        return api
-          .query(Prismic.Predicates.at('document.type', 'home'))
-          .then(response => {
-            return generatePageData('home', response.results[0].data)
-          })
+  async asyncData(context) {
+    const pageContent = await initGql
+      .query({
+        query: gql`
+          query {
+            allHomes {
+              edges {
+                node {
+                  title
+                  _linkType
+                }
+              }
+            }
+          }
+        `,
       })
-    }
+      .then(response => {
+        // const total = response.data.allPieces_singles.totalCount
+        const pageContent = response.data.allHomes.edges
+
+        // format info
+        return pageContent
+      })
+      .catch(error => {
+        console.error(error)
+      })
+
+    return { pageContent }
+  },
+  created() {
+    let data = ''
+    this.pageContent.forEach(item => {
+      const result = {
+        title: item.node.title,
+      }
+      data = result
+    })
+
+    this.pageContent = data
   },
   mounted() {
     this.$app.$emit('page::mounted')
-  },
-  head() {
-    return this.$setPageMetadata(this.pageContent)
   },
 }
 </script>

@@ -1,5 +1,6 @@
 import Prismic from 'prismic-javascript'
-import { prismicConfig, initApi } from './prismic-config'
+import gql from 'graphql-tag'
+import { prismicConfig, initApi, initGql } from './prismic-config'
 
 export default {
   mode: 'universal',
@@ -212,45 +213,67 @@ export default {
        * Create the CT in Prismic, populate it with content
        * and then change 'home' to 'whatever'
        */
-      const homepage = initApi().then(api => {
-        return api
-          .query(Prismic.Predicates.at('document.type', 'home'))
-          .then(response => {
-            return response.results.map(payload => {
-              return {
-                route: '/',
-                payload,
+      const homepage = initGql
+        .query({
+          query: gql`
+            query {
+              allHomes {
+                edges {
+                  node {
+                    title
+                    _linkType
+                  }
+                }
               }
-            })
+            }
+          `,
+        })
+        .then(response => {
+          return response.data.allHomes.edges.map(payload => {
+            return {
+              route: `/`,
+              payload,
+            }
           })
-      })
+        })
+        .catch(error => {
+          console.error(error)
+        })
 
-      /**
-       * Fetch content for 'pieces'
-       *
-       * Want to query a different repeatable Custom Type other than pieces?
-       * Create the CT in Prismic, populate it with content
-       * and then change 'pieces_single' to 'whatever'
-       */
-      const pieces = initApi().then(api => {
-        return api
-          .query(Prismic.Predicates.at('document.type', 'pieces_single'), {
-            orderings: '[document.first_publication_date]',
-          })
-          .then(response => {
-            return response.results.map(payload => {
-              return {
-                route: `/pieces/${payload.uid}`,
-                payload,
+      const piecesSingles = initGql
+        .query({
+          query: gql`
+            query {
+              allPieces_singles(sortBy: meta_firstPublicationDate_ASC) {
+                edges {
+                  node {
+                    _meta {
+                      uid
+                    }
+                    title
+                  }
+                }
+                totalCount
               }
-            })
+            }
+          `,
+        })
+        .then(response => {
+          return response.data.allPieces_singles.edges.map(payload => {
+            return {
+              route: `/pieces/${payload.node._meta.uid}`,
+              payload,
+            }
           })
-      })
+        })
+        .catch(error => {
+          console.error(error)
+        })
 
       // We return an array of the results of each promise using the spread operator.
       // It will be passed to each page as the `payload` property of the `context` object,
       // which is used to generate the markup of the page.
-      return Promise.all([homepage, pieces]).then(values => {
+      return Promise.all([homepage, piecesSingles]).then(values => {
         return [...values[0], ...values[1]]
       })
     },

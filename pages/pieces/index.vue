@@ -1,44 +1,68 @@
 <template>
   <section class="container">
     <h2
-      v-for="(piece, index) in pieces"
-      :key="`${piece.data.title}-${index}`"
+      v-for="(piece, index) in pageContent"
+      :key="`${piece.title}-${index}`"
       class="animate js-animate"
     >
       <nuxt-link :to="piece.uid" class="text--5" append>
-        {{ piece.data.title }}
+        {{ piece.title }}
       </nuxt-link>
     </h2>
   </section>
 </template>
 
 <script>
-import Prismic from 'prismic-javascript'
+import gql from 'graphql-tag'
 import { routeTransitionFade } from '@/mixins/route-transitions'
-import { initApi, generatePageData } from '@/prismic-config'
+import { initGql } from '@/prismic-config'
 
 export default {
   mixins: [routeTransitionFade],
-  data() {
-    return {
-      pageContent: {
-        title: 'Pieces',
-      },
-    }
-  },
-  asyncData(context) {
-    if (context.payload) {
-      return generatePageData('pieces_single', context.payload.data)
-    } else {
-      return initApi().then(api => {
-        return api
-          .query(Prismic.Predicates.at('document.type', 'pieces_single'), {
-            orderings: '[document.first_publication_date]',
-          })
-          .then(response => {
-            return generatePageData('pieces_single', response.results)
-          })
+  async asyncData(context) {
+    const data = []
+    await initGql
+      .query({
+        query: gql`
+          query {
+            allPieces_singles(sortBy: meta_firstPublicationDate_ASC) {
+              edges {
+                node {
+                  _meta {
+                    uid
+                  }
+                  title
+                }
+              }
+              totalCount
+            }
+          }
+        `,
       })
+      .then(response => {
+        // const total = response.data.allPieces_singles.totalCount
+        const pageContent = response.data.allPieces_singles.edges
+
+        pageContent.forEach(item => {
+          const result = {
+            title: item.node.title,
+            uid: item.node._meta.uid,
+          }
+          data.push(result)
+          // data = result
+        })
+        // // const total = response.data.allPieces_singles.totalCount
+        // const pageContent = response.data.allPieces_singles.edges
+
+        // // format info
+        // return pageContent
+      })
+      .catch(error => {
+        console.error(error)
+      })
+
+    return {
+      pageContent: data,
     }
   },
   mounted() {

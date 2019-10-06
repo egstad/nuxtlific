@@ -1,4 +1,7 @@
 import Prismic from 'prismic-javascript'
+import { PrismicLink } from 'apollo-link-prismic'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+import ApolloClient from 'apollo-client'
 
 export const prismicConfig = {
   baseUrl: 'https://nuxtlific.cdn.prismic.io/api/v2',
@@ -9,6 +12,13 @@ export const initApi = req => {
     req,
   })
 }
+
+export const initGql = new ApolloClient({
+  link: PrismicLink({
+    uri: 'https://nuxtlific.prismic.io/graphql',
+  }),
+  cache: new InMemoryCache(),
+})
 
 export const generatePageData = (documentType, data) => {
   switch (documentType) {
@@ -25,7 +35,7 @@ export const generatePageData = (documentType, data) => {
       }
     case 'pieces_single':
       return {
-        pieces: data,
+        pageContent: data,
         title: data.title,
       }
   }

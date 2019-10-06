@@ -15,7 +15,7 @@ export const routeTransitionFade = {
     enter(el, done) {
       TweenLite.to(el, 0.5, {
         ease: Power2.easeOut,
-        delay: 0.5,
+        delay: 0,
         opacity: 1,
         y: 0,
         onComplete: done,

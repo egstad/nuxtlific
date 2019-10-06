@@ -1,6 +1,5 @@
-import Prismic from 'prismic-javascript'
 import gql from 'graphql-tag'
-import { prismicConfig, initApi, initGql } from './prismic-config'
+import { prismicConfig, initApi } from './prismic-config'
 
 export default {
   mode: 'universal',
@@ -213,7 +212,7 @@ export default {
        * Create the CT in Prismic, populate it with content
        * and then change 'home' to 'whatever'
        */
-      const homepage = initGql
+      const homepage = initApi
         .query({
           query: gql`
             query {
@@ -240,7 +239,7 @@ export default {
           console.error(error)
         })
 
-      const piecesSingles = initGql
+      const piecesSingles = initApi
         .query({
           query: gql`
             query {

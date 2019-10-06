@@ -11,13 +11,13 @@
 <script>
 import gql from 'graphql-tag'
 import { routeTransitionFade } from '@/mixins/route-transitions'
-import { initGql } from '@/prismic-config'
+import { initApi } from '@/prismic-config'
 
 export default {
   mixins: [routeTransitionFade],
   async asyncData({ params, error }) {
     let data = null
-    await initGql
+    await initApi
       .query({
         query: gql`
           query {

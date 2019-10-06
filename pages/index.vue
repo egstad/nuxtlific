@@ -12,7 +12,7 @@
 import gql from 'graphql-tag'
 import Logo from '@/components/Logo'
 import { routeTransitionFade } from '@/mixins/route-transitions'
-import { initGql } from '@/prismic-config'
+import { initApi } from '@/prismic-config'
 
 export default {
   components: {
@@ -20,7 +20,7 @@ export default {
   },
   mixins: [routeTransitionFade],
   async asyncData(context) {
-    const pageContent = await initGql
+    const pageContent = await initApi
       .query({
         query: gql`
           query {

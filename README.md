@@ -1,4 +1,4 @@
-# Nuxtlific
+# Nuxtlific (deprecated as of 231023)
 
 ![Nuxt.js](https://img.shields.io/badge/nuxt-2.9.2-brightgreen) ![Node Version](https://img.shields.io/badge/node-v11.6.0-brightgreen) ![NPM Version](https://img.shields.io/badge/npm-6.9.0-brightgreen) [![Netlify Status](https://api.netlify.com/api/v1/badges/00905143-4df8-4d02-b65b-0a6f97ba4e85/deploy-status)](https://app.netlify.com/sites/nuxtlific/deploys) 
 
